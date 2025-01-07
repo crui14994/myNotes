@@ -1,8 +1,8 @@
 <!--
  * @Author:
  * @Date: 2023-11-28 14:19:23
- * @LastEditTime: 2023-12-07 14:13:42
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2025-01-07 11:30:28
+ * @LastEditors: caorui 778943319@qq.com
  * @Description:
 -->
 
@@ -12,18 +12,20 @@
 
 - @param
 
-| 参数名       | type   | 描述                       | 默认值                         |
-| ------------ | ------ | -------------------------- | ------------------------------ |
-| polylineData | Array  | 路径的 Cartesian3 坐标数组 | -                              |
-| romingConfig | Object | 巡航配置                   | {modelShow:true,pathShow:true} |
+| 参数名       | type   | 描述                       | 默认值   |
+| ------------ | ------ | -------------------------- | -------- |
+| polylineData | Array  | 路径的 Cartesian3 坐标数组 | -        |
+| romingConfig | Object | 巡航配置                   | 参考下表 |
 
 ###### romingConfig 属性
 
-| 属性名    | type    | 描述          | 默认值 |
-| --------- | ------- | ------------- | ------ |
-| modelUrl  | String  | 模型 url 地址 | -      |
-| modelShow | Boolean | 模型是否显示  | true   |
-| pathShow  | Boolean | 路径是否显示  | true   |
+| 属性名               | type    | 描述                           | 默认值 |
+| -------------------- | ------- | ------------------------------ | ------ |
+| modelUrl             | String  | 模型 url 地址                  | -      |
+| modelShow            | Boolean | 模型是否显示                   | true   |
+| pathShow             | Boolean | 路径是否显示                   | true   |
+| polylineShow         | Boolean | 路线是否显示                   | true   |
+| interpolationOptions | Object  | 点插值(参考 cesium 点插值配置) | -      |
 
 - @returns
 
@@ -32,7 +34,19 @@
 | entityRoaming | Object | 巡航对象 | -      |
 
 ```js
-let entityRoaming = CM.Roaming.RoamingStart(polylineData, romingConfig);
+let entityRoaming = CM.Roaming.RoamingStart(polylineData, {
+  modelUrl: "data/model/Cesium_Air.glb",
+  interpolationOptions: {
+    // interpolationDegree: 5,
+    // interpolationAlgorithm: Cesium.LagrangePolynomialApproximation,
+
+    interpolationDegree: 2,
+    interpolationAlgorithm: Cesium.HermitePolynomialApproximation,
+
+    // interpolationDegree: 1,
+    // interpolationAlgorithm: Cesium.LinearApproximation
+  },
+});
 ```
 
 #### 上帝视角开启 openGodView
@@ -105,9 +119,9 @@ CM.Roaming.RoamingHeight(value);
 
 - @param
 
-| 参数名 | type   | 描述       | 默认值 |
-| ------ | ------ | ---------- | ------ |
-| value  | Number | 距中心的距离 | 50    |
+| 参数名 | type   | 描述         | 默认值 |
+| ------ | ------ | ------------ | ------ |
+| value  | Number | 距中心的距离 | 50     |
 
 ```js
 CM.Roaming.RoamingRange(value);
