@@ -54,8 +54,28 @@ let position3 = CM.Position.getClickPosition(eventPosition, 3);
 | PromiseObj | Object | 返回一个 Promise 对象；并在 then 中返回高度。 |
 
 ```js
-CM.Position.getHeigthByLonLat("35.125", "104.5").then((height) => {
+CM.Position.getHeigthByLonLat("104.5", "35.125").then((height) => {
   console.log(height);
+});
+```
+
+#### 根据经纬度数组获取 terrain 高程，精度为 m getHeigthByArr
+
+- @param
+
+| 参数名    | type  | 描述       | 默认值 |
+| --------- | ----- | ---------- | ------ |
+| positions | Array | 经纬度数组 | -      |
+
+- @returns
+
+| 返回值     | type   | 描述                                              |
+| ---------- | ------ | ------------------------------------------------- |
+| PromiseObj | Object | 返回一个 Promise 对象；并在 then 中返回高度数组。 |
+
+```js
+CM.Position.getHeigthByArr([{ lng: 109.578, lat: 29.11 }]).then((heightArr) => {
+  console.log(heightArr);
 });
 ```
 

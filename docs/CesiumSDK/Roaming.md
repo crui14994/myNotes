@@ -1,7 +1,7 @@
 <!--
  * @Author:
  * @Date: 2023-11-28 14:19:23
- * @LastEditTime: 2025-01-07 11:30:28
+ * @LastEditTime: 2025-01-07 13:20:19
  * @LastEditors: caorui 778943319@qq.com
  * @Description:
 -->
@@ -109,7 +109,7 @@ CM.Roaming.RoamingPitch(value);
 
 | 参数名 | type   | 描述       | 默认值 |
 | ------ | ------ | ---------- | ------ |
-| value  | Number | 飞行的高度 | 500    |
+| value  | Number | 飞行的高度 | 1500   |
 
 ```js
 CM.Roaming.RoamingHeight(value);
